@@ -11,6 +11,8 @@ type Props = {
 };
 
 const Modal = ({ children, isOpen, onClose, name }: Props) => {
+    if (!isOpen) return null;
+    
   return ReactDOM.createPortal(
     <div className="bg-black-600 fixed inset-0 flex h-full w-full items-center justify-center overflow-y-auto bg-opacity-50 p-4">
       <div className="w-full max-w-2xl rounded-lg bg-white p-4 shadow-lg dark:bg-dark-secondary">
