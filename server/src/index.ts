@@ -4,10 +4,13 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import helmet from "helmet";
 import morgan from "morgan";
+/* ROUTE IMPORTS */
 import projectRoutes from "./routes/projectRoutes";
 import taskRoutes from "./routes/taskRoutes";
 import searchRoutes from "./routes/searchRoutes";
-/* ROUTE IMPORTS */
+import teamRoutes from "./routes/teamRoutes";
+import userRoutes from "./routes/userRoutes";
+
 
 /* CONFIGURATIONS */ 
 dotenv.config();
@@ -20,7 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-/* ROUTE CALLS */
+/* ROUTES */
 app.get("/", (req, res) => {
     res.send("This is home route!");
 });
@@ -28,6 +31,8 @@ app.get("/", (req, res) => {
 app.use("/projects", projectRoutes);
 app.use("/tasks", taskRoutes);
 app.use("/search", searchRoutes);
+app.use("/users", userRoutes);
+app.use("/teams", teamRoutes);
 
 /* SERVER */
 const port = process.env.PORT || 3000;
